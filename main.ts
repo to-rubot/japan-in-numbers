@@ -14,6 +14,8 @@
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
+// Japan in Numbers — entrypoint for this entry: hands in the app/ site and its screenshots, and writes the
+// dossier the judge reads. The site itself lives entirely in app/ (static files, no build step, no network).
 import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,3 +36,4 @@ writeFileSync(
   join(out, 'dossier.json'),
   buildDossier(out, { text_max_bytes: 163840, screenshots: { max: 4, max_bytes: 262144 }, app_max_files: 993, app_max_bytes: 16777216 }),
 );
+console.log(`Japan in Numbers: site and screenshots copied to ${out}, dossier.json written.`);
